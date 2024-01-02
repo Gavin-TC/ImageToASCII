@@ -3,21 +3,21 @@ from tkinter import filedialog
 from PIL import Image, ImageTk, ImageDraw, ImageFont
 
 image = None
-photo = None  # Declare photo globally
+photo = None
 num_images = 0
 
 def import_image():
-	global image, photo  # Add photo here
+	global image, photo
 	image_path = filedialog.askopenfilename(title="Select image", filetypes=[("Image files", "*.jpg *.png")])  # Open the file explorer
-	if image_path:  # If a file is selected
+	if image_path:
 		image = Image.open(image_path)
 		image = image.resize((250, 250))
 		photo = ImageTk.PhotoImage(image)
 		image_label.config(bg='black', image=photo)
 		image_label.image = photo
-		convertButton.config(state=tk.NORMAL)  # Enable the convertButton
+		convertButton.config(state=tk.NORMAL)
 	elif image_path == None:
-		convertButton.config(state=tk.DISABLED)  # Disable the convertButton if no file is selected
+		convertButton.config(state=tk.DISABLED)  # Disable the convertButton if no file is present
 
 def convert_image():
 	global image, num_images
@@ -28,7 +28,6 @@ def convert_image():
 	new_image = new_image.rotate(-90)
 	new_image = new_image.transpose(Image.FLIP_LEFT_RIGHT)
 
-	# Resize image
 	width, height = new_image.size
 	aspect_ratio = height / width
 
@@ -61,7 +60,6 @@ def convert_image():
 	d.text((0, 0), ascii_image, fill=(255, 255, 255))
 
 	text_image.save(f"output/converted-image({num_images}).png")
-	root.destroy()
 
 root = tk.Tk()
 root.geometry("400x400")
@@ -82,7 +80,7 @@ frame.pack(side=tk.BOTTOM, padx=10, pady=10)
 
 importButton = tk.Button(frame, text="Import Image", command=import_image)
 convertButton = tk.Button(frame, text="Convert Image", command=convert_image)
-image_label = tk.Label(root)  # Create a label to display the image
+image_label = tk.Label(root)
 
 importButton.pack(side=tk.LEFT)
 convertButton.pack(side=tk.LEFT)
