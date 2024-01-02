@@ -23,7 +23,7 @@ def convert_image():
 	global image, num_images
 	num_images += 1
 
-	# Convert image to grayscale
+	# Convert image to grayscale and rotate it properly
 	new_image = image.convert("L")
 	new_image = new_image.rotate(-90)
 	new_image = new_image.transpose(Image.FLIP_LEFT_RIGHT)
