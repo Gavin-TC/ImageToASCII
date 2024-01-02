@@ -32,7 +32,7 @@ def convert_image():
 	width, height = new_image.size
 	aspect_ratio = height / width
 
-	ascii_chars = "@$#+=-. "
+	ascii_chars = " .-=+#$@"
 	brightness_step = 255 / len(ascii_chars)
 	ascii_image = ""
 
@@ -47,7 +47,9 @@ def convert_image():
 	with open(f'output/text-version({num_images}).txt', 'w') as f:
 		f.write(ascii_image)
 
-	# Calculate the size of a character
+	char_width = 18
+	char_height = 16
+
 	image_width = width * char_width
 	image_height = height * char_height
 
