@@ -48,8 +48,8 @@ def convert_image():
 		f.write(ascii_image)
 
 	# Calculate the size of a character
-	char_width = 18 # Adjust this value to match the width of a character in your font
-	char_height = 15  # Adjust this value to match the height of a character in your font
+	char_width = 18
+	char_height = 15
 
 	# Create the output image
 	text_image = Image.new("P", (width * char_width, height * char_height), color = (0, 0, 0))
