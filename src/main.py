@@ -46,28 +46,15 @@ def convert_image():
 
 	with open(f'output/text-version({num_images}).txt', 'w') as f:
 		f.write(ascii_image)
-	
-	# Calculate the size of the ASCII image
-	ascii_width = max(len(line) for line in ascii_image.split('\n'))
-	ascii_height = ascii_image.count('\n')
-
-	# Calculate the size of the ASCII image
-	ascii_width = max(len(line) for line in ascii_image.split('\n'))
-	ascii_height = ascii_image.count('\n')
 
 	# Calculate the size of a character
-	char_width = 10  # Adjust this value to match the width of a character in your font
-	char_height = 18  # Adjust this value to match the height of a character in your font
-
-	# Calculate the size of the output image
-	image_width = ascii_width * char_width
-	image_height = ascii_height * char_height
+	char_width = 18 # Adjust this value to match the width of a character in your font
+	char_height = 15  # Adjust this value to match the height of a character in your font
 
 	# Create the output image
-	text_image = Image.new("P", (image_width, image_height), color = (0, 0, 0))
-	font = ImageFont.truetype('arial.ttf', 12)
+	text_image = Image.new("P", (width * char_width, height * char_height), color = (0, 0, 0))
 	d = ImageDraw.Draw(text_image)
-	d.text((0, 0), ascii_image, font=font, fill=(255, 255, 255))
+	d.text((0, 0), ascii_image, fill=(255, 255, 255))
 
 	text_image.save(f"output/converted-image({num_images}).png")
 	root.destroy()  # debug
