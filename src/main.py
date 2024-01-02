@@ -47,19 +47,21 @@ def convert_image():
 	with open(f'output/text-version({num_images}).txt', 'w') as f:
 		f.write(ascii_image)
 
-	char_width = 18
-	char_height = 16
+	char_width = 15
+	char_height = 13
 
 	image_width = width * char_width
 	image_height = height * char_height
 
+	aspect_ratio = image_width / image_height
+
 	# Create the output image
-	text_image = Image.new("P", (image_width, image_height), color = (0, 0, 0))
+	text_image = Image.new("P", (int(image_width * aspect_ratio), int(image_height * aspect_ratio)), color = (0, 0, 0))
 	d = ImageDraw.Draw(text_image)
 	d.text((0, 0), ascii_image, fill=(255, 255, 255))
 
 	text_image.save(f"output/converted-image({num_images}).png")
-	root.destroy()  # debug
+	root.destroy()
 
 root = tk.Tk()
 root.geometry("400x400")
