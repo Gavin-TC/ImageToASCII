@@ -70,8 +70,7 @@ def convert_image():
 	d.text((10, 10), ascii_image, font=font, fill=(255, 255, 255))
 
 	text_image.save(f"output/converted-image({num_images}).png")
-
-	root.destroy()
+	root.destroy()  # debug
 
 root = tk.Tk()
 root.geometry("400x400")
