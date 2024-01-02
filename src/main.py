@@ -67,7 +67,7 @@ def convert_image():
 	text_image = Image.new("P", (image_width, image_height), color = (0, 0, 0))
 	font = ImageFont.truetype('arial.ttf', 12)
 	d = ImageDraw.Draw(text_image)
-	d.text((10, 10), ascii_image, font=font, fill=(255, 255, 255))
+	d.text((0, 0), ascii_image, font=font, fill=(255, 255, 255))
 
 	text_image.save(f"output/converted-image({num_images}).png")
 	root.destroy()  # debug
